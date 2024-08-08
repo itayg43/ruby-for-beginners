@@ -24,13 +24,13 @@ def is_valid_credentials(email:,password:)
   return true
 end
 
-def print_selection_menu()
+def print_selection_menu
   puts "1. Set service credentials"
   puts "2. Get service credentials"
   puts "3. Exit"
 end
 
-def set_service_credentials_handler()
+def set_service_credentials_handler
   service_name=prompt(message:"Service name: ").to_sym
   service_username=prompt(message:"Service username: ") 
   service_password=prompt(message:"Service password: ")
@@ -40,7 +40,7 @@ def set_service_credentials_handler()
   VAULT[service_name][:password]=service_password
 end
 
-def get_service_credentials_handler()
+def get_service_credentials_handler
   service_name=prompt(message:"Service name: ").to_sym
 
   service_credentials=VAULT[service_name]
@@ -63,16 +63,16 @@ if is_valid == false
 end
 
 loop do
-  print_selection_menu()
+  print_selection_menu
 
   selection_input=prompt(message:"Enter your selection: ")
 
   case selection_input
   when "1"
-    set_service_credentials_handler()
+    set_service_credentials_handler
 
   when "2"
-    get_service_credentials_handler()
+    get_service_credentials_handler
 
   when "3"
     puts "Exiting the program"
@@ -83,4 +83,3 @@ loop do
     exit
   end
 end
-
